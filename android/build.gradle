@@ -8,7 +8,13 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.library'
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+}
+
+group 'id.passage.passage_flex_flutter'
+version '1.0-SNAPSHOT'
 
 allprojects {
     repositories {
@@ -20,8 +26,13 @@ allprojects {
 android {
     namespace 'id.passage.passage_flex_flutter'
     compileSdkVersion 34
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 28
         targetSdkVersion 35
     }
 
