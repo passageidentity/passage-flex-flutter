@@ -1,4 +1,10 @@
-class PassageFlexFlutter {
+import 'package:passage_flex_flutter/passage_flex_passkey.dart'; 
 
-  // TODO: Add your code here
+class PassageFlex {
+  final PassageFlexPasskey passkey;
+  final String appId;
+
+  PassageFlex(this.appId) : passkey = PassageFlexPasskey(appId) {
+    // will be added after adding PassageFlexPaltform class
+  }
 }
