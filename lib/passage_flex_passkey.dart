@@ -1,7 +1,7 @@
 import 'dart:io'; 
 import 'package:passage_flex_flutter/Passage_Flutter_Flex_Models/passage_error_code.dart';
 import 'Passage_Flutter_Flex_Models/passage_error.dart';
-import 'passage_flutter_flex_platform/passage_flutter_platform_interface.dart'; // Adjust based on where errors are defined
+import 'passage_flutter_flex_platform/passage_flutter_platform_interface.dart';
 
 /// The base class for utilizing native passkey APIs and Passage Flex APIs together.
 class PassageFlexPasskey {
