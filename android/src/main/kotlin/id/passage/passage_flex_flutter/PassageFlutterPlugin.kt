@@ -16,14 +16,9 @@ import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
-/** PassageFlutterPlugin */
 class PassageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
 
+  private lateinit var channel : MethodChannel
   private lateinit var context: Context
   private lateinit var activity: Activity
   private var passageFlutter: PassageFlexFlutter? = null
