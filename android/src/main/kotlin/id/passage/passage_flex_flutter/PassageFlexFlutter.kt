@@ -62,9 +62,8 @@ internal class PassageFlexFlutter(activity: Activity, appId: String) {
         val transactionId = call.argument<String>("transactionId") ?: return invalidArgumentError(result)
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val authResult = passage.passkey.authenticate(transactionId)
-                val jsonString = Gson().toJson(authResult)
-                result.success(jsonString)
+                val nonce = passage.passkey.authenticate(transactionId)
+                result.success(nonce)
             } catch (e: Exception) {
                 val error = when (e) {
                     is AuthenticateInvalidRequestException -> {
