@@ -1,13 +1,3 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
-    }
-}
-
 plugins {
     id "com.android.library"
     id "kotlin-android"
@@ -26,24 +16,33 @@ allprojects {
 android {
     namespace 'id.passage.passage_flex_flutter'
     compileSdkVersion 34
-    
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    defaultConfig {
-        minSdkVersion 28
-        targetSdkVersion 35
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dependencies {
-        implementation 'id.passage.android:passageflex:0.2.0'
-        implementation 'com.google.code.gson:gson:2.10.1'
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    defaultConfig {
+        minSdkVersion 28
+    }
+
+    dependencies {
+        testImplementation 'org.jetbrains.kotlin:kotlin-test'
+        testImplementation 'org.mockito:mockito-core:5.0.0'
+        implementation 'com.google.code.gson:gson:2.10.1'
+        implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+        implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
+        implementation 'androidx.annotation:annotation:1.8.2'
+        implementation 'id.passage.android:passageflex:0.2.0'
+    }
+    
 }

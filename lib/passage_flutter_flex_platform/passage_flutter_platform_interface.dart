@@ -1,23 +1,31 @@
-import '../passage_flutter_flex_models/passkey_creation_options.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import '../passage_flutter_flex_models/authenticator_attachment.dart';
 import 'passage_flutter_method_channel.dart';
 
-abstract class PassageFlutterPlatform {
+abstract class PassageFlutterPlatform extends PlatformInterface {
+  PassageFlutterPlatform() : super(token: _token);
 
-  static final PassageFlutterPlatform _instance = MethodChannelPassageFlutter();
+  static final Object _token = Object();
 
+  static PassageFlutterPlatform _instance = MethodChannelPassageFlutter();
   static PassageFlutterPlatform get instance => _instance;
+
+  static set instance(PassageFlutterPlatform instance) {
+    PlatformInterface.verifyToken(instance, _token);
+    _instance = instance;
+  }
 
   Future<void> initialize(String appId) async {
     throw UnimplementedError('initialize() has not been implemented.');
   }
 
-  Future<Null> register(
-      String identifier, PasskeyCreationOptions? options) {
-    throw UnimplementedError('registerWithPasskey() has not been implemented.');
+  Future<String> register(
+      String transactionId, AuthenticatorAttachment? attachment) {
+    throw UnimplementedError('register() has not been implemented.');
   }
 
-  Future<Null> authenticate(String? identifier) {
-    throw UnimplementedError('loginWithPasskey() as not been implemented.');
+  Future<String> authenticate(String? transactionId) {
+    throw UnimplementedError('authenticate() as not been implemented.');
   }
 
 }

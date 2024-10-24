@@ -1,20 +1,9 @@
-class PasskeyCreationOptions {
-  AuthenticatorAttachment? authenticatorAttachment;
-
-  PasskeyCreationOptions({this.authenticatorAttachment});
-
-  Map<String, dynamic> toJson() => {
-        "authenticatorAttachment": authenticatorAttachment?.value,
-      };
-}
-
 enum AuthenticatorAttachment {
   platform,
   crossPlatform,
   any,
 }
 
-// Extension on AuthenticatorAttachment to get string values
 extension AuthenticatorAttachmentExtension on AuthenticatorAttachment {
   String get value {
     switch (this) {
@@ -25,7 +14,7 @@ extension AuthenticatorAttachmentExtension on AuthenticatorAttachment {
       case AuthenticatorAttachment.any:
         return 'any';
       default:
-        return '';
+        return 'platform';
     }
   }
 }

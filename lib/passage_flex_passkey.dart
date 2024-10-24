@@ -1,26 +1,11 @@
-import 'dart:io'; 
-import 'package:passage_flex_flutter/Passage_Flutter_Flex_Models/passage_error_code.dart';
-import 'Passage_Flutter_Flex_Models/passage_error.dart';
+import 'package:passage_flex_flutter/passage_flutter_flex_models/authenticator_attachment.dart';
 import 'passage_flutter_flex_platform/passage_flutter_platform_interface.dart';
 
 /// The base class for utilizing native passkey APIs and Passage Flex APIs together.
 class PassageFlexPasskey {
-  final String appId;
-
-  PassageFlexPasskey(this.appId);
 
   /// Checks if the user's device supports passkeys.
-  bool isSupported() {
-    if (Platform.isIOS) {
-      final iosVersion = double.tryParse(Platform.operatingSystemVersion.split(' ')[0]) ?? 0.0;
-      return iosVersion >= 16.0;
-    } else if (Platform.isAndroid) {
-      final androidVersion = int.tryParse(Platform.operatingSystemVersion.split(' ')[0]) ?? 0;
-      return androidVersion >= 28;
-    } else {
-      return false; // Unsupported platform
-    }
-  }
+
 
   /// Registers a new passkey.
   ///
@@ -37,9 +22,8 @@ class PassageFlexPasskey {
   /// your app's server.
   ///
   /// - Throws: `PassageFlexPasskeyError` when passkey authorization fails.
-  Future<String?> register(String transactionId) async {
-    _checkForPasskeySupport();
-    return PassageFlutterPlatform.instance.register(transactionId, null);
+  Future<String> register(String transactionId, [AuthenticatorAttachment? attachment]) async {
+    return PassageFlutterPlatform.instance.register(transactionId, attachment);
   }
 
   /// Authenticates with a passkey.
@@ -54,14 +38,8 @@ class PassageFlexPasskey {
   /// your app's server.
   ///
   /// - Throws: `PassageFlexPasskeyError` when passkey authorization fails.
-  Future<String?> authenticate([String? transactionId]) async {
-    _checkForPasskeySupport();
+  Future<String> authenticate([String? transactionId]) async {
     return PassageFlutterPlatform.instance.authenticate(transactionId);
   }
 
-  void _checkForPasskeySupport() {
-    if (!isSupported()) {
-      throw PassageError(message: "Passkeys are not supported on this device.", code: PasskeyErrorCode.passkeysNotSupported);
-    }
-  }
 }
