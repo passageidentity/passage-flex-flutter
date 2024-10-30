@@ -20,7 +20,7 @@ abstract class PassageFlutterPlatform extends PlatformInterface {
   }
 
   Future<String> register(
-      String transactionId, AuthenticatorAttachment? attachment) {
+      String transactionId, PasskeyCreationOptions? options) {
     throw UnimplementedError('register() has not been implemented.');
   }
 

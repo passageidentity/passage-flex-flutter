@@ -22,8 +22,8 @@ class PassageFlexPasskey {
   /// your app's server.
   ///
   /// - Throws: `PassageFlexPasskeyError` when passkey authorization fails.
-  Future<String> register(String transactionId, [AuthenticatorAttachment? attachment]) async {
-    return PassageFlutterPlatform.instance.register(transactionId, attachment);
+  Future<String> register(String transactionId, [PasskeyCreationOptions? options]) async {
+    return PassageFlutterPlatform.instance.register(transactionId, options);
   }
 
   /// Authenticates with a passkey.

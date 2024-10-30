@@ -13,16 +13,18 @@ class MethodChannelPassageFlutter extends PassageFlutterPlatform {
     await methodChannel.invokeMethod('initialize', {'appId': appId});
   }
 
-  @override
+@override
 Future<String> register(
-    String identifier, AuthenticatorAttachment? attachment) async {
+    String transactionId, PasskeyCreationOptions? options) async {
   try {
     final nonce = await methodChannel.invokeMethod<String>(
-        'register',
-        {
-          'transactionId': identifier,
-          'authenticatorAttachment': attachment?.value
-        });
+      'register',
+      {
+        'transactionId': transactionId,
+        'passkeyCreationOptions': options?.toJson() ?? {},
+      },
+    );
+
     return nonce!;
   } catch (e) {
     throw PassageError.fromObject(object: e);

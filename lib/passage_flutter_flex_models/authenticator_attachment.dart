@@ -18,3 +18,13 @@ extension AuthenticatorAttachmentExtension on AuthenticatorAttachment {
     }
   }
 }
+
+class PasskeyCreationOptions {
+  AuthenticatorAttachment? authenticatorAttachment;
+
+  PasskeyCreationOptions({this.authenticatorAttachment});
+
+  Map<String, dynamic> toJson() => {
+        "authenticatorAttachment": authenticatorAttachment?.value,
+      };
+}

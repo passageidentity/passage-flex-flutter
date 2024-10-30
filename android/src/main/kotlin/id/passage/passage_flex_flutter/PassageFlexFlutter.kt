@@ -10,6 +10,7 @@ import id.passage.passageflex.exceptions.AuthenticateDiscoverableLoginException
 import id.passage.passageflex.exceptions.AuthenticateInvalidRequestException
 import id.passage.passageflex.exceptions.RegisterCredentialException
 import id.passage.passageflex.exceptions.RegisterInvalidRequestException
+import id.passage.passageflex.models.PasskeyCreationOptions
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.CoroutineScope
@@ -30,7 +31,8 @@ internal class PassageFlexFlutter(activity: Activity, appId: String) {
 
     internal fun register(call: MethodCall, result: MethodChannel.Result) {
         val transactionId = call.argument<String>("transactionId") ?: return invalidArgumentError(result)
-        val attachmentValue = call.argument<String?>("authenticatorAttachment")
+        val optionsMap = call.argument<Map<String, String>>("passkeyCreationOptions")
+        val attachmentValue = optionsMap?.get("authenticatorAttachment")
 
         val authenticatorAttachment = when (attachmentValue) {
             "platform" -> AuthenticatorAttachment.platform
@@ -38,10 +40,11 @@ internal class PassageFlexFlutter(activity: Activity, appId: String) {
             "any" -> AuthenticatorAttachment.any
             else -> AuthenticatorAttachment.platform
         }
-    
+        val passkeyCreationOptions = PasskeyCreationOptions(authenticatorAttachment)
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val nonce = passage.passkey.register(transactionId, authenticatorAttachment)
+                val nonce = passage.passkey.register(transactionId, passkeyCreationOptions)
                 result.success(nonce)
             } catch (e: Exception) {
                 val error = when (e) {
