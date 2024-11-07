@@ -1,0 +1,51 @@
+name: Publish Flutter Flex Package
+
+on:
+  repository_dispatch:
+    types: [publish]
+
+jobs:
+  publish:
+    name: Publish Flutter Flex Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.1'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Authenticate to pub.dev
+        env:
+          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+        run: |
+          if [ -z "$XDG_CONFIG_HOME" ]; then
+            CREDENTIALS_DIR="$HOME/.config/dart"
+          else
+            CREDENTIALS_DIR="$XDG_CONFIG_HOME/dart"
+          fi
+          mkdir -p "$CREDENTIALS_DIR"
+          echo "$PUB_CREDENTIALS" > "$CREDENTIALS_DIR/pub-credentials.json"
+
+      - name: Dry run publish
+        run: flutter pub publish --dry-run
+
+      - name: Publish package
+        run: yes | flutter pub publish
+
+      - name: Clean up authentication
+        run: |
+          if [ -z "$XDG_CONFIG_HOME" ]; then
+            CREDENTIALS_DIR="$HOME/.config/dart"
+          else
+            CREDENTIALS_DIR="$XDG_CONFIG_HOME/dart"
+          fi
+          rm "$CREDENTIALS_DIR/pub-credentials.json"
