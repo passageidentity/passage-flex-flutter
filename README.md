@@ -15,7 +15,7 @@ Use passage-flex-flutter to implement Passkey Flex in your web, andriod and ios 
 | Product                                                                                                                                  | Compatible                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | ![Passkey Flex](https://storage.googleapis.com/passage-docs/github-md-assets/passage-passkey-flex-icon.png) Passkey **Flex**             | ✅                                                                                                                    |
-| ![Passkey Complete](https://storage.googleapis.com/passage-docs/github-md-assets/passage-passkey-complete-icon.png) Passkey **Complete** | ✖️ For Passkey Complete, check out [passage-swift](https://github.com/passageidentity/passage-flex-flutter)                  |
+| ![Passkey Complete](https://storage.googleapis.com/passage-docs/github-md-assets/passage-passkey-complete-icon.png) Passkey **Complete** | ✖️ For Passkey Complete, check out [passage-flutter](https://github.com/passageidentity/passage-flutter)                  |
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ Use passage-flex-flutter to implement Passkey Flex in your web, andriod and ios 
 ### Install
 
 ```sh
-flutter pub add passage_flutter
+flutter pub add passage_flex_flutter
 ```
 
 ### Import
