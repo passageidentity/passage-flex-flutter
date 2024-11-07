@@ -10,7 +10,7 @@ Use [Passkey Complete](https://docs.passage.id/complete) as a standalone passwor
 
 Use [Passkey Ready](https://docs.passage.id/passkey-ready) to determine if your users are ready for passkeys.
 
-### In passage-flex-ios
+### In passage-flex-flutter
 
 Use passage-flex-flutter to implement Passkey Flex in your web, andriod and ios application to add native passkey authentication in your own authentication flows.
 
