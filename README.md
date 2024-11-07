@@ -39,14 +39,14 @@ flutter pub add passage_flex_flutter
 ```dart
 import 'package:passage_flutter/passage_flutter.dart';
 
-final passage = PassageFlutter('YOUR_PASSAGE_APP_ID');
+final passageFlex = PassageFlexFlutter('YOUR_PASSAGE_APP_ID');
 
 ```
 
 ### Initialize
 
 ```dart
-await passage.passkey.register('name@email.com');
+await passageFlex.passkey.register('name@email.com');
 ```
 
 ## Support & Feedback
