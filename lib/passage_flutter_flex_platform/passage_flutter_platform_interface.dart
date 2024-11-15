@@ -1,5 +1,5 @@
+import 'package:passage_flex_flutter/passage_flutter_flex_models/authenticator_attachment.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../passage_flutter_flex_models/authenticator_attachment.dart';
 import 'passage_flutter_method_channel.dart';
 
 abstract class PassageFlutterPlatform extends PlatformInterface {

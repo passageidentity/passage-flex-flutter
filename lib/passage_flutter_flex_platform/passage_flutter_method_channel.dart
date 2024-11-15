@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import '../Passage_Flutter_Flex_Models/passage_error.dart';
-import '../passage_flutter_flex_models/authenticator_attachment.dart';
+import 'package:passage_flex_flutter/passage_flutter_flex_models/authenticator_attachment.dart';
+import 'package:passage_flex_flutter/passage_flutter_flex_models/passage_error.dart';
 import 'passage_flutter_platform_interface.dart';
 
 class MethodChannelPassageFlutter extends PassageFlutterPlatform {

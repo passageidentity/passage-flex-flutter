@@ -1,4 +1,4 @@
-import '../helpers/error_handling.dart';
+import 'package:passage_flex_flutter/helpers/error_handling.dart';
 
 class PassageError implements Exception {
   final String message;
