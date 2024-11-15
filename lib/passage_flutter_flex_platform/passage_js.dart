@@ -2,7 +2,7 @@
 library passage;
 
 import 'package:js/js.dart';
-import '../passage_flutter_flex_models/authenticator_attachment.dart';
+import 'package:passage_flex_flutter/passage_flutter_flex_models/authenticator_attachment.dart';
 
 @JS('PassageFlex')
 class PassageFlex {
