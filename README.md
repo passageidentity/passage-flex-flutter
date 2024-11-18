@@ -37,7 +37,7 @@ flutter pub add passage_flex_flutter
 ### Import
 
 ```dart
-import 'package:passage_flutter/passage_flutter.dart';
+import 'package:passage_flex_flutter/passage_flex_flutter.dart';
 
 final passageFlex = PassageFlexFlutter('YOUR_PASSAGE_APP_ID');
 
