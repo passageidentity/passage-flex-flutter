@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Merge pull request #17 from passageidentity/release-minor-v0.1.0
+
 ## 0.1.0
 
 * Merge pull request #15 from passageidentity/workflowFix
