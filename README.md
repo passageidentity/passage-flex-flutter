@@ -1,5 +1,8 @@
 ![image](https://github.com/user-attachments/assets/00475bf6-b475-4050-a50f-9b39354afe09)
 
+# ⚠️ DEPRECATED
+**This repository is deprecated and no longer maintained as of January 16, 2026.**
+
 ## About
 
 [Passage by 1Password](https://1password.com/product/passage) unlocks the passwordless future with a simpler, more secure passkey authentication experience. Passage handles the complexities of the [WebAuthn API](https://blog.1password.com/what-is-webauthn/), and allows you to implement passkeys with ease.
